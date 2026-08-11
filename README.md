@@ -113,9 +113,35 @@ git push -u origin main
 
 ---
 
-## 🌐 Hướng Dẫn Deploy (Publish Web Application)
+## 🌐 Hướng Dẫn Deploy Web Lên GitHub Pages (Đã fix lỗi 404)
 
-### Phương án 1: Deploy lên Render / Railway / Fly.io / Cloud Run (Hỗ trợ Full-Stack Node + Express)
+### 🚨 Nguyên nhân lỗi 404 trên GitHub Pages & Cách khắc phục:
+Trình duyệt không thể chạy trực tiếp file `.tsx` chưa biên dịch (`/src/main.tsx`). Đồng thời, đường dẫn tương đối cần được bật để assets tải đúng từ thư mục con `/TokenTurbine/`. Dự án đã được tinh chỉnh toàn diện:
+1. **Đã cấu hình `base: './'` trong `vite.config.ts`**: Đảm bảo tất cả file JavaScript/CSS được biên dịch ra đường dẫn tương đối.
+2. **Thêm dữ liệu dự phòng Client-side**: Giúp trang web hoạt động 100% mượt mà cả ở dạng Static SPA trên GitHub Pages (không cần server Node).
+3. **Thêm GitHub Actions Workflow (`.github/workflows/deploy.yml`)**: Tự động build và deploy lên GitHub Pages mỗi khi push code lên `main`.
+
+### ⚡ Các bước kích hoạt GitHub Pages trên Repository của bạn:
+
+1. **Push code mới lên GitHub:**
+   ```bash
+   git add .
+   git commit -m "fix: Fix GitHub Pages 404 error with relative base path and GitHub Actions"
+   git push origin main
+   ```
+
+2. **Cấu hình Nguồn Deploy trên GitHub:**
+   - Vào repository trên GitHub: `https://github.com/USERNAME/TokenTurbine`
+   - Vào **Settings** -> **Pages** (ở cột bên trái).
+   - Tại mục **Build and deployment** -> **Source**: Chọn **GitHub Actions** (thay vì "Deploy from a branch").
+
+3. **Kiểm tra kết quả:**
+   - Chuyển sang tab **Actions** trên GitHub để theo dõi tiến trình chạy của workflow `Deploy to GitHub Pages`.
+   - Khi hoàn tất (dấu tích xanh ✅), truy cập trang web tại: `https://USERNAME.github.io/TokenTurbine/`
+
+---
+
+## 🌐 Hướng Dẫn Deploy Full-Stack Node/Express (Render / Cloud Run)
 Do ứng dụng bao gồm cả Node/Express server backend cho Gemini API:
 1. Tạo Web Service mới trên **Render** hoặc **Railway**.
 2. Kết nối tới GitHub Repository vừa push.
