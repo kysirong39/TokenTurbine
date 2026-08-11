@@ -123,21 +123,27 @@ Trình duyệt không thể chạy trực tiếp file `.tsx` chưa biên dịch 
 
 ### ⚡ Các bước kích hoạt GitHub Pages trên Repository của bạn:
 
+#### Cách 1: Sử dụng GitHub Actions (Khuyên dùng - Tự động)
 1. **Push code mới lên GitHub:**
    ```bash
    git add .
    git commit -m "fix: Fix GitHub Pages 404 error with relative base path and GitHub Actions"
    git push origin main
    ```
-
 2. **Cấu hình Nguồn Deploy trên GitHub:**
    - Vào repository trên GitHub: `https://github.com/USERNAME/TokenTurbine`
    - Vào **Settings** -> **Pages** (ở cột bên trái).
    - Tại mục **Build and deployment** -> **Source**: Chọn **GitHub Actions** (thay vì "Deploy from a branch").
-
 3. **Kiểm tra kết quả:**
    - Chuyển sang tab **Actions** trên GitHub để theo dõi tiến trình chạy của workflow `Deploy to GitHub Pages`.
    - Khi hoàn tất (dấu tích xanh ✅), truy cập trang web tại: `https://USERNAME.github.io/TokenTurbine/`
+
+#### Cách 2: Deploy trực tiếp bằng lệnh `npm run deploy` (Lệnh gh-pages)
+Nếu bạn cài đặt project ở máy cục bộ và muốn publish nhanh không dùng GitHub Actions:
+```bash
+npm run deploy
+```
+Lệnh này sẽ tự động chạy `npm run build` và đẩy toàn bộ thư mục `dist/` đã biên dịch lên nhánh `gh-pages`. Trên GitHub Settings -> Pages -> Source, chọn branch `gh-pages` và thư mục `/ (root)`.
 
 ---
 
