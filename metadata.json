@@ -1,0 +1,6 @@
+{
+  "name": "Wind Turbine RWA Tokenization PoC",
+  "description": "Nền tảng PoC Token hóa tài sản thực (RWA) Cụm Turbine Điện Gió 50MW tích hợp Stellar Blockchain, Fireblocks Vault, BIDV Core Banking & Waterfall Cashflow Distribution Engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
