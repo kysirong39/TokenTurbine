@@ -123,27 +123,24 @@ Trình duyệt không thể chạy trực tiếp file `.tsx` chưa biên dịch 
 
 ### ⚡ Các bước kích hoạt GitHub Pages trên Repository của bạn:
 
-#### Cách 1: Sử dụng GitHub Actions (Khuyên dùng - Tự động)
-1. **Push code mới lên GitHub:**
-   ```bash
-   git add .
-   git commit -m "fix: Fix GitHub Pages 404 error with relative base path and GitHub Actions"
-   git push origin main
-   ```
-2. **Cấu hình Nguồn Deploy trên GitHub:**
-   - Vào repository trên GitHub: `https://github.com/USERNAME/TokenTurbine`
-   - Vào **Settings** -> **Pages** (ở cột bên trái).
-   - Tại mục **Build and deployment** -> **Source**: Chọn **GitHub Actions** (thay vì "Deploy from a branch").
-3. **Kiểm tra kết quả:**
-   - Chuyển sang tab **Actions** trên GitHub để theo dõi tiến trình chạy của workflow `Deploy to GitHub Pages`.
-   - Khi hoàn tất (dấu tích xanh ✅), truy cập trang web tại: `https://USERNAME.github.io/TokenTurbine/`
+#### Cách 1: Cấu hình thư mục `/docs` trên nhánh `main` (Đơn giản & Nhanh nhất - 10 giây)
+Do toàn bộ sản phẩm đã được tự động biên dịch vào thư mục `/docs` sẵn sàng:
+1. Vào repository trên GitHub: `https://github.com/kysirong39/TokenTurbine`
+2. Vào tab **Settings** -> mục **Pages** (cột bên trái).
+3. Tại mục **Build and deployment**:
+   - **Source**: Chọn **Deploy from a branch**
+   - **Branch**: Chọn **main**
+   - **Thư mục (Folder)**: Chọn **/docs** *(Thay vì / (root))*
+4. Nhấn **Save**.
+5. Đợi 1-2 phút rồi F5 lại trang `https://kysirong39.github.io/TokenTurbine/`. Web sẽ load mượt mà 100%!
 
-#### Cách 2: Deploy trực tiếp bằng lệnh `npm run deploy` (Lệnh gh-pages)
-Nếu bạn cài đặt project ở máy cục bộ và muốn publish nhanh không dùng GitHub Actions:
-```bash
-npm run deploy
-```
-Lệnh này sẽ tự động chạy `npm run build` và đẩy toàn bộ thư mục `dist/` đã biên dịch lên nhánh `gh-pages`. Trên GitHub Settings -> Pages -> Source, chọn branch `gh-pages` và thư mục `/ (root)`.
+#### Cách 2: Sử dụng GitHub Actions (Tự động)
+1. Vào repository trên GitHub -> **Settings** -> **Pages**.
+2. Tại mục **Source**: Chọn **GitHub Actions**.
+3. Workflow tự động chạy trong tab **Actions** sẽ deploy bản build mới nhất.
+
+#### Cách 3: Deploy qua lệnh `npm run deploy` (Nhánh gh-pages)
+Chạy lệnh `npm run deploy` ở máy cá nhân để tự động tạo nhánh `gh-pages`. Sau đó chọn branch `gh-pages` và folder `/ (root)` trong GitHub Pages settings.
 
 ---
 
