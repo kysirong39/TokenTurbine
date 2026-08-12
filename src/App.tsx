@@ -419,7 +419,7 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-white/10 bg-white/5 backdrop-blur-xl py-6 text-center text-xs text-slate-400 relative z-10 mt-12">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p>© 2026 PoC Tokenize Turbine Điện Gió - BIDV Banking Consortium & Partners</p>
+          <p>© 2026 PoC Tokenize Turbine Điện Gió - R&D BIDV</p>
           <p className="font-mono text-slate-300">
             Regulated RWA Framework | Stellar Soroban Smart Contract & Fireblocks Custody
           </p>
